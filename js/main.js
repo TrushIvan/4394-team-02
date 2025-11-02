@@ -123,3 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
 document.body.addEventListener("htmx:afterOnLoad", () => {
 	init();
 });
+
+
+
+
+document.body.addEventListener("htmx:afterSwap", (event) => {
+  if (event.target.classList.contains("craft-wines")) {
+    import("./components/index.craft-wine-cart.js").then((module) => {
+      if (module.initCraftCart) {
+        module.initCraftCart(); 
+      }
+    });
+  }
+});
