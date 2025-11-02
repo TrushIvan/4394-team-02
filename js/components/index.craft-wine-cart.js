@@ -107,6 +107,6 @@ export function initCraftCart() {
     });
 
     const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    totalValue.textContent = '${total.toFixed(2)} USD';
+    totalValue.textContent = `${total.toFixed(2)} USD`;
   }
 }
