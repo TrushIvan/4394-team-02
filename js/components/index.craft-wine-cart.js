@@ -8,12 +8,10 @@ export function initCraftCart() {
   const addToCartButtons = document.querySelectorAll(".craft-wines-btn");
   const closeBtn = document.querySelector(".close-btn");
 
-  // Беремо з LocalStorage, або створюємо пустий масив
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   renderCart();
 
-  // Додавання товару
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const card = button.closest(".craft-wines-item");
@@ -33,13 +31,13 @@ export function initCraftCart() {
     });
   });
 
-  // Показати модалку
+
   cartIcon.addEventListener("click", () => {
     cartPopup.classList.add("active");
     cartIcon.classList.add("hidden");
   });
 
-  // Закрити модалку
+ 
   function closeCart() {
     cartPopup.classList.remove("active");
     if (cart.length > 0) {
@@ -52,24 +50,24 @@ export function initCraftCart() {
     if (e.target === cartPopup) closeCart();
   });
 
-  // Зберегти у LocalStorage
+ 
   function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  // Рендер кошика
+  
   function renderCart() {
     cartCount.textContent = cart.length;
 
     if (cart.length === 0) {
-      // Порожній кошик
+ 
       emptySection.style.display = "block";
       if (productList) productList.style.display = "none";
       if (totalValue) totalValue.textContent = "0 USD";
       cartIcon.classList.add("hidden");
       return;
     } else {
-      // Є товари
+
       emptySection.style.display = "none";
       if (productList) productList.style.display = "block";
       cartIcon.classList.remove("hidden");
@@ -82,7 +80,7 @@ export function initCraftCart() {
       li.classList.add("product-row");
       li.innerHTML = `
         <div class="product-details">
-          <img src="./img/craft-wines/craft-wines-${item.name.toLowerCase().replace(/\s/g, "-")}.jpg"
+          <img src="././img/craft-wines/craft-wines-${item.name.toLowerCase().replace(/\s/g, "-")}.jpg"
                alt="${item.name}" class="product-img" />
           <a href="#" class="product-link">${item.name}</a>
         </div>
@@ -100,7 +98,7 @@ export function initCraftCart() {
       productList.appendChild(li);
     });
 
-    // Зміна кількості
+    
     document.querySelectorAll(".quantity-input").forEach((input) => {
       input.addEventListener("change", () => {
         const idx = input.getAttribute("data-index");
@@ -110,7 +108,7 @@ export function initCraftCart() {
       });
     });
 
-    // Видалення товару
+ 
     document.querySelectorAll(".remove-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const idx = btn.getAttribute("data-index");
@@ -120,7 +118,6 @@ export function initCraftCart() {
       });
     });
 
-    // Підрахунок Total
     const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     totalValue.
 textContent = `${total.toFixed(2)} USD`;
