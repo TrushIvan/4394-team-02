@@ -116,6 +116,24 @@
   right: -5px;
 }
 
+.hidden {
+  display: none;
+}
+
+.cart-popup-wrapper {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.cart-popup-wrapper.active {
+  display: flex;
+}
+
 @media (min-width: 1025px) {
   .craft-wines {
     padding: 100px 0;
