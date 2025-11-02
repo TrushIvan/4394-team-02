@@ -38,3 +38,11 @@ body {
 	scroll-behavior: smooth;
 	
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.lock {
+	overflow: hidden;
+}
