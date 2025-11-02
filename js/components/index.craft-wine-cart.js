@@ -8,9 +8,11 @@ export function initCraftCart() {
   const addToCartButtons = document.querySelectorAll(".craft-wines-btn");
   const closeBtn = document.querySelector(".close-btn");
 
+  
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   renderCart();
+
 
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -37,7 +39,7 @@ export function initCraftCart() {
     cartIcon.classList.add("hidden");
   });
 
- 
+  
   function closeCart() {
     cartPopup.classList.remove("active");
     if (cart.length > 0) {
@@ -50,31 +52,33 @@ export function initCraftCart() {
     if (e.target === cartPopup) closeCart();
   });
 
- 
+  
   function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  
+
   function renderCart() {
     cartCount.textContent = cart.length;
 
     if (cart.length === 0) {
- 
+    
       emptySection.style.display = "block";
       if (productList) productList.style.display = "none";
       if (totalValue) totalValue.textContent = "0 USD";
-      cartIcon.classList.add("hidden");
+      cartIcon?.classList.add("hidden");
       return;
     } else {
-
+     
       emptySection.style.display = "none";
       if (productList) productList.style.display = "block";
-      cartIcon.classList.remove("hidden");
+      cartIcon?.classList.remove("hidden");
     }
+
 
     productList.innerHTML = "";
 
+    
     cart.forEach((item, index) => {
       const li = document.createElement("li");
       li.classList.add("product-row");
@@ -98,7 +102,6 @@ export function initCraftCart() {
       productList.appendChild(li);
     });
 
-    
     document.querySelectorAll(".quantity-input").forEach((input) => {
       input.addEventListener("change", () => {
         const idx = input.getAttribute("data-index");
@@ -108,7 +111,6 @@ export function initCraftCart() {
       });
     });
 
- 
     document.querySelectorAll(".remove-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const idx = btn.getAttribute("data-index");
@@ -118,8 +120,9 @@ export function initCraftCart() {
       });
     });
 
-    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    totalValue.
-textContent = `${total.toFixed(2)} USD`;
+    const total = cart.reduce((sum, item) => sum + item.
+
+price * item.qty, 0);
+    totalValue.textContent = `${total.toFixed(2)} USD`;
   }
 }
