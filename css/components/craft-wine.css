@@ -85,7 +85,7 @@
 
 .cart-icon {
   position: fixed;
-  bottom: 20px;         /* на мобілках краще внизу, щоб великим пальцем дістати */
+  bottom: 20px;  
   right: 20px;
   background: #fff;
   padding: 8px;
@@ -93,11 +93,10 @@
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.4s ease, transform 0.3s ease;
-  display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  z-index: 1000;
+  z-index: 3000;
 }
 
 .cart-icon img {
@@ -114,6 +113,24 @@
   position: absolute;
   top: -5px;
   right: -5px;
+}
+
+.cart-popup-wrapper {
+  display: none !important;
+  position: fixed;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2000;
+}
+
+.cart-popup-wrapper.active {
+  display: flex !important;
+}
+
+.hidden {
+  display: none !important;
 }
 
 @media (min-width: 1025px) {
