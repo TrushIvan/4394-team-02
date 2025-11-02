@@ -7,46 +7,55 @@ export function initCraftCart() {
   const addToCartButtons = document.querySelectorAll(".craft-wines-btn");
   const closeBtn = document.querySelector(".close-btn");
 
+
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   renderCart();
+
 
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const card = button.closest(".craft-wines-item");
       const name = card.querySelector(".craft-wines-name")?.textContent || "No name";
       const priceText = card.querySelector(".craft-wines-price")?.textContent || "0";
-      const price = parseFloat(priceText.replace("USD", "").replace(",", ".").trim());
+      const price = parseFloat(priceText.replace(",", "."));
 
-      cart.push({ name, price });
+      const existing = cart.find((item) => item.name === name);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
       saveCart();
       renderCart();
     });
   });
 
+ 
   cartIcon.addEventListener("click", () => {
     cartPopup.classList.add("active");
     cartIcon.classList.add("hidden");
   });
 
+ 
   function closeCart() {
     cartPopup.classList.remove("active");
-    cartIcon.classList.remove("hidden");
+    if (cart.length > 0) cartIcon.classList.remove("hidden");
   }
-
   closeBtn?.addEventListener("click", closeCart);
-
   cartPopup.addEventListener("click", (e) => {
     if (e.target === cartPopup) closeCart();
   });
 
+ 
   function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
   function renderCart() {
     cartCount.textContent = cart.length;
-    cart.length > 0 ? cartIcon.classList.remove("hidden") : cartIcon.classList.add("hidden");
+    if (cart.length > 0) cartIcon.classList.remove("hidden");
+    else cartIcon.classList.add("hidden");
 
     productList.innerHTML = "";
 
@@ -55,14 +64,14 @@ export function initCraftCart() {
       li.classList.add("product-row");
       li.innerHTML = `
         <div class="product-details">
-          <img src="././img/craft-wines/${item.name.toLowerCase().replace(/\s/g, "-")}.jpg" alt="${item.name}" class="product-img" />
+          <img src="./img/craft-wines/craft-wines-${item.name.toLowerCase().replace(/\s/g, "-")}.jpg" alt="${item.name}" class="product-img" />
           <a href="#" class="product-link">${item.name}</a>
         </div>
         <div class="product-controls">
           <div class="quantity-box">
-            <input type="number" value="1" min="1" class="quantity-input" />
+            <input type="number" value="${item.qty}" min="1" class="quantity-input" data-index="${index}" />
           </div>
-          <p class="product-price">${item.price.toFixed(2)} USD</p>
+          <p class="product-price">${(item.price * item.qty).toFixed(2)} USD</p>
           <button type="button" class="remove-btn" data-index="${index}" aria-label="Remove product">
             &times;
           </button>
@@ -71,7 +80,16 @@ export function initCraftCart() {
       productList.appendChild(li);
     });
 
-   
+    document.querySelectorAll(".quantity-input").forEach((input) => {
+      input.addEventListener("change", () => {
+        const idx = input.getAttribute("data-index");
+        cart[idx].qty = parseInt(input.value) || 1;
+        saveCart();
+        renderCart();
+      });
+    });
+
+    // Видалення товару
     document.querySelectorAll(".remove-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const idx = btn.getAttribute("data-index");
@@ -81,8 +99,8 @@ export function initCraftCart() {
       });
     });
 
-  
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    // Total
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     totalValue.textContent = `${total.toFixed(2)} USD`;
   }
 }
