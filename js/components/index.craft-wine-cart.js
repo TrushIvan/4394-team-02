@@ -55,7 +55,7 @@ export function initCraftCart() {
       li.classList.add("product-row");
       li.innerHTML = `
         <div class="product-details">
-          <img src="./img/craft-wines/${item.name.toLowerCase().replace(/\s/g, "-")}.jpg" alt="${item.name}" class="product-img" />
+          <img src="././img/craft-wines/${item.name.toLowerCase().replace(/\s/g, "-")}.jpg" alt="${item.name}" class="product-img" />
           <a href="#" class="product-link">${item.name}</a>
         </div>
         <div class="product-controls">
@@ -83,6 +83,6 @@ export function initCraftCart() {
 
   
     const total = cart.reduce((sum, item) => sum + item.price, 0);
-    totalValue.textContent = '${total.toFixed(2)} USD';
+    totalValue.textContent = `${total.toFixed(2)} USD`;
   }
 }
