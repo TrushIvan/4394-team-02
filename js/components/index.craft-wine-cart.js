@@ -4,19 +4,19 @@ export function initCraftCart() {
   const cartPopup = document.querySelector(".cart-popup-wrapper");
   const productList = document.querySelector(".product-list");
   const totalValue = document.querySelector(".total-value");
+  const emptySection = document.querySelector(".empty-cart-section");
   const addToCartButtons = document.querySelectorAll(".craft-wines-btn");
   const closeBtn = document.querySelector(".close-btn");
-
 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   renderCart();
 
-
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const card = button.closest(".craft-wines-item");
-      const name = card.querySelector(".craft-wines-name")?.textContent || "No name";
+      const name =
+        card.querySelector(".craft-wines-name")?.textContent || "No name";
       const priceText = card.querySelector(".craft-wines-price")?.textContent || "0";
       const price = parseFloat(priceText.replace(",", "."));
 
@@ -26,18 +26,18 @@ export function initCraftCart() {
       } else {
         cart.push({ name, price, qty: 1 });
       }
+
       saveCart();
       renderCart();
     });
   });
 
- 
   cartIcon.addEventListener("click", () => {
     cartPopup.classList.add("active");
     cartIcon.classList.add("hidden");
   });
 
- 
+
   function closeCart() {
     cartPopup.classList.remove("active");
     if (cart.length > 0) cartIcon.classList.remove("hidden");
@@ -47,15 +47,22 @@ export function initCraftCart() {
     if (e.target === cartPopup) closeCart();
   });
 
- 
+
   function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
+ 
   function renderCart() {
     cartCount.textContent = cart.length;
-    if (cart.length > 0) cartIcon.classList.remove("hidden");
-    else cartIcon.classList.add("hidden");
+
+    if (cart.length > 0) {
+      cartIcon.classList.remove("hidden");
+      emptySection.style.display = "none"; 
+    } else {
+      emptySection.style.display = "block"; 
+      cartIcon.classList.add("hidden");
+    }
 
     productList.innerHTML = "";
 
@@ -64,7 +71,7 @@ export function initCraftCart() {
       li.classList.add("product-row");
       li.innerHTML = `
         <div class="product-details">
-          <img src="./img/craft-wines/craft-wines-${item.name.toLowerCase().replace(/\s/g, "-")}.jpg" alt="${item.name}" class="product-img" />
+          <img src="././img/craft-wines/craft-wines-${item.name.toLowerCase().replace(/\s/g, "-")}.jpg" alt="${item.name}" class="product-img" />
           <a href="#" class="product-link">${item.name}</a>
         </div>
         <div class="product-controls">
@@ -89,7 +96,7 @@ export function initCraftCart() {
       });
     });
 
-    // Видалення товару
+  
     document.querySelectorAll(".remove-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const idx = btn.getAttribute("data-index");
@@ -99,8 +106,7 @@ export function initCraftCart() {
       });
     });
 
-    // Total
     const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    totalValue.textContent = `${total.toFixed(2)} USD`;
+    totalValue.textContent = '${total.toFixed(2)} USD';
   }
 }
