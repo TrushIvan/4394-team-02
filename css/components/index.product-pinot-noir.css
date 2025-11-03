@@ -196,47 +196,82 @@
     margin: 24px 0;
     background: #edf0f5;
 }
-
 @media (min-width: 1025px) {
   .product-page {
-    max-width: 1200px; 
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 200px 40px;
     display: flex;
-    justify-content: center;
     align-items: flex-start;
-    gap: 60px;
-    padding: 120px 40px;
+    gap: 80px;
   }
 
   .product-gallery {
     width: 50%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .product-main-img {
-    max-width: 450px;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 0;
   }
 
   .product-thumbs {
-    justify-content: center;
-    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0;
+  }
+
+  .product-thumbs .thumb {
+    width: 70px;
+    height: 70px;
+  }
+
+  .product-main-img {
+    max-width: 500px;
+    height: auto;
+  }
+
+  .gallery-arrow {
+    font-size: 22px;
+    padding: 8px 12px;
   }
 
   .product-info {
-    width: 50%;
+    width: 45%;
+  }
+
+  .link-store {
+    display: block;
+    margin-bottom: 20px;
+    text-align: right;
   }
 
   .product-title {
-    font-size: 28px;
+    font-size: 32px;
+    margin-bottom: 10px;
   }
 
   .product-title span {
-    font-size: 20px;
+    font-size: 22px;
+  }
+
+  .product-code {
+    font-size: 15px;
+    margin-bottom: 15px;
   }
 
   .product-price {
-    font-size: 24px;
+    font-size: 26px;
+    margin: 20px 0;
+  }
+
+  .product-actions {
+    margin: 20px 0;
+  }
+
+  .product-description {
+    margin-top: 40px;
+    max-width: 550px;
   }
 
   .product-description h2 {
@@ -245,5 +280,6 @@
 
   .product-description p {
     font-size: 17px;
+    line-height: 1.7;
   }
 }
