@@ -115,23 +115,7 @@
   right: -5px;
 }
 
-.cart-popup-wrapper {
-  display: none !important;
-  position: fixed;
-  inset: 0;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 2000;
-}
 
-.cart-popup-wrapper.active {
-  display: flex !important;
-}
-
-.hidden {
-  display: none !important;
-}
 
 @media (min-width: 1025px) {
   .craft-wines {
