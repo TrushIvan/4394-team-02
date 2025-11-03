@@ -1,38 +1,69 @@
-<section class="product-page">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pinot Noir – CaliWines</title>
 
-  <div class="product-gallery">
-    <button class="gallery-arrow left">&#10094;</button>
-    <img src="img/craft-wines/craft-wines-pinot-noir.jpg" alt="Product image" class="product-main-img">
-    <button class="gallery-arrow right">&#10095;</button>
-  </div>
+    <link rel="stylesheet" href="css/style.css" />
 
+    <link rel="icon" href="icons/common/favicon.png" type="image/png" />
 
-  <div class="product-thumbs">
-    <img src="img/craft-wines/craft-wines-pinot-noir.jpg" class="thumb active" alt="thumb">
-  </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
 
-  <div class="product-info">
-    <p class="stock-status">In stock</p>
-    <h1 class="product-title">Pinot Noir <span>(093049)</span></h1>
-    <p class="product-code">Product code: 20</p>
-    <p class="product-price">12,00 USD</p>
+ 
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
 
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-    <div class="product-actions">
-      <div class="quantity">
-        <button class="qty-btn minus">−</button>
-        <input type="number" value="1" min="1">
-        <button class="qty-btn plus">+</button>
-      </div>
-      <button class="add-to-cart">Add to cart</button>
-    </div>
-  </div>
+    <header
+      class="header"
+      data-hx-trigger="load"
+      data-hx-swap="innerHTML"
+      data-hx-get="global.header-nav.partial.html"
+    ></header>
 
-  <div class="product-description">
-    <h2>Description</h2>
-    <p>
-      It is one of the lightest red wines. Pinot Noir is easy to drink, it won't punch you in the face like some reds can and is perfect for romantic evenings and meetings with friends. Our Pinot Noir has a "light body" and feels silky to the tongue. You might taste bright berries like raspberry and cranberry.
-    </p>
-  </div>
+    <main class="main">
+      <section
+        class="product-page"
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="index.product-pinot-noir.partial.html"
+      ></section>
+    </main>
 
-</section>
+    <footer class="footer">
+      <section
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="index.footer-form.partial.html"
+      ></section>
+
+      <div
+        data-hx-trigger="load"
+        data-hx-swap="outerHTML"
+        data-hx-get="global.footer-nav.partial.html"
+      ></div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
