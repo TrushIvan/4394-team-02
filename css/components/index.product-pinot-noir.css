@@ -198,71 +198,74 @@
 }
 @media (min-width: 1025px) {
   .product-page {
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 200px 40px;
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 80px;
+  }
+
+  .link-store {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    margin: 0;
   }
 
   .product-gallery {
     width: 50%;
     display: flex;
-    align-items: flex-start;
-    gap: 30px;
-    padding: 0;
-  }
-
-  .product-thumbs {
-    display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin: 0;
-  }
-
-  .product-thumbs .thumb {
-    width: 70px;
-    height: 70px;
+    align-items: center;
+    position: relative;
   }
 
   .product-main-img {
-    max-width: 500px;
+    max-width: 420px;
     height: auto;
   }
 
-  .gallery-arrow {
-    font-size: 22px;
-    padding: 8px 12px;
+
+  .product-thumbs {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 15px;
   }
+
+  .product-thumbs .thumb {
+    width: 65px;
+    height: 65px;
+  }
+
+
+  .gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+  .gallery-arrow.left { left: 0; }
+  .gallery-arrow.right { right: 0; }
+
 
   .product-info {
     width: 45%;
   }
 
-  .link-store {
-    display: block;
-    margin-bottom: 20px;
-    text-align: right;
-  }
-
   .product-title {
     font-size: 32px;
-    margin-bottom: 10px;
-  }
-
-  .product-title span {
-    font-size: 22px;
-  }
-
-  .product-code {
-    font-size: 15px;
-    margin-bottom: 15px;
   }
 
   .product-price {
-    font-size: 26px;
-    margin: 20px 0;
+    font-size: 24px;
+    margin: 15px 0;
   }
 
   .product-actions {
@@ -270,16 +273,6 @@
   }
 
   .product-description {
-    margin-top: 40px;
-    max-width: 550px;
-  }
-
-  .product-description h2 {
-    font-size: 14px;
-  }
-
-  .product-description p {
-    font-size: 17px;
-    line-height: 1.7;
+    margin-top: 30px;
   }
 }
