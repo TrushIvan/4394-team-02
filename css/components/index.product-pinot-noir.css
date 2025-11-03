@@ -1,4 +1,5 @@
 .product-page {
+    background-color: #fff;
   padding: 15px;
   margin: 0 auto;
   max-width: 500px;
@@ -9,7 +10,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #1b1b1b;
   padding: 20px 0;
 }
 
@@ -81,10 +81,10 @@
 
 .product-code {
   font-size: 13px;
-  color: var(--craft-text-grey);
+  color: var(--ff-artistic);
 }
 
-.product-price {
+.product-price-wine {
   font-size: 22px;
   font-weight: bold;
   margin: 15px 0;
