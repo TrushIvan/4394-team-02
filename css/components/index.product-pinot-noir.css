@@ -214,34 +214,33 @@
     margin: 0;
   }
 
-    .product-gallery {
+  .product-gallery {
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    position: relative;
   }
 
   .product-main-img {
     max-width: 420px;
     height: auto;
-    display: block;
   }
+
 
   .product-thumbs {
     display: flex;
-    justify-content: center; 
     gap: 12px;
-    margin-top: 10px;
-    order: 2; 
+    justify-content: flex-start;
+
+    margin-top: 15px;
   }
 
   .product-thumbs .thumb {
     width: 65px;
     height: 65px;
-    object-fit: cover;
-    cursor: pointer;
   }
+
 
   .gallery-arrow {
     position: absolute;
