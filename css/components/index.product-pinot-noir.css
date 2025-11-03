@@ -107,7 +107,7 @@
   overflow: hidden;
 }
 
-.quantity-input {
+.quantity-input-product {
   width: 55%;
   border: none;
   outline: none;
@@ -116,7 +116,7 @@
   font-size: 16px;
 }
 
-.quantity-arrows {
+.quantity-arrows-product {
   width: 45%;
   height: 100%;
   border-left: 1px solid #bfc3ca;
