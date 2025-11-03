@@ -80,11 +80,12 @@
 }
 
 .product-code {
+  font-family: var(--ff-artistic);
   font-size: 13px;
-  color: var(--ff-artistic);
+  color: var(--craft-text-grey);
 }
 
-.product-price-wine {
+.product-price {
   font-size: 22px;
   font-weight: bold;
   margin: 15px 0;
