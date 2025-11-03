@@ -35,7 +35,7 @@
        .wine-history-period{
       position: relative;
       padding-bottom: 6px;
-      margin-bottom: 2px;
+      margin-bottom: 20px;
       font-family: "Prata", serif;
       font-size: 27px;
       color: #ffffff;
@@ -66,6 +66,7 @@
       }
 
     }
+
 
 
 
