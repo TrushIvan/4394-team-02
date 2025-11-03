@@ -25,24 +25,24 @@
       text-align: left;
     }
 
-    .event em {
+    .wine-history-date {
       color: #c8693a;
       font-size: 14px;
       display: block;
 
     }
 
-       .event h3 {
+       .wine-history-period{
       position: relative;
       padding-bottom: 6px;
-      margin-bottom: 30px;
+      margin-bottom: 2px;
       font-family: "Prata", serif;
       font-size: 27px;
       color: #ffffff;
     }
 
 
-    .event p {
+    .about-wine-history {
       color: #898082;
       font-size: 16px;
       line-height: 1.6;
@@ -66,5 +66,6 @@
       }
 
     }
+
 
 
